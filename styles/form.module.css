@@ -1,0 +1,41 @@
+
+
+.main{
+    width: 40%;
+    margin: 100px auto;
+    text-align: center;
+}
+.main form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    margin-top: 50px;
+}
+
+.main input {
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.main button{
+    padding: 8px 30px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.heading{
+    font-size: 25px;
+}
+
+@media screen and (max-width:500px) {
+    .main{
+        width: 100%;
+        padding: 0 20px;
+    }
+}
