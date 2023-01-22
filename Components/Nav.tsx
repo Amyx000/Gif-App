@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from "@/styles/Home.module.css"
 import { AiFillStar } from "react-icons/ai"
 import { signOut } from 'firebase/auth'
@@ -22,6 +22,11 @@ function Nav({ onMouseEnter }: Props) {
         }
 
     }
+    useEffect(() => {
+        if (!auth.currentUser?.email) {
+            router.push("/")
+        }
+    }, [])
 
     return (
         <div className={style.nav}>

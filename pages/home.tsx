@@ -6,11 +6,8 @@ import ClipLoader from 'react-spinners/ClipLoader'
 import Nav from '@/Components/Nav'
 import Favorites from '@/Components/Favorites'
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
-import { auth } from '@/firebase-config'
-import { useRouter } from 'next/router'
 
 function home() {
-    const router = useRouter()
     const [search, Setsearch] = useState("")
     const [pagination, Setpagination] = useState(
         {
@@ -63,12 +60,6 @@ function home() {
     const unfavFunc = (url: string) => {
         Setfav(fav.filter((item) => item !== url))
     }
-
-    useEffect(() => {
-        if (!auth.currentUser?.email) {
-            router.push("/")
-        }
-    }, [])
 
     return (
         <>
