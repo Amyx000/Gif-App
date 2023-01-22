@@ -19,7 +19,7 @@ function Favorites({ className, onMouseLeave, fav, onClick }: Props) {
         {fav.map((item, index) => {
           return (
             <div className={style.favbar} key={index}>
-              <img className={style.favgif} src={item} />
+              <img className={style.favgif} src={item} alt=""/>
               <AiFillStar onClick={()=>onClick(item)} style={{"color":"#F49D1A","fontSize":"20px","cursor":"pointer"}}/>
             </div>
           )
