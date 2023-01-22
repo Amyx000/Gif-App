@@ -29,12 +29,18 @@
     background-color: black;
     color: white;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+.search button:active{
+    color: black;
+    background-color: whitesmoke;
 }
 
 .gifs{
     margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    row-gap: 10px;
 }
 
 .gifs img{
@@ -42,4 +48,84 @@
     height: 200px;
     border-radius: 12px;
     object-fit: cover;
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+}
+
+.nav div:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fav{
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35vw;
+    height: 100vh;
+    background-color: black;
+    transition: all 0.5s ease;
+    overflow-y: auto;
+}
+
+.favhidden{
+    text-align: center;
+    font-size: 25px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35vw;
+    height: 100vh;
+    background-color: whitesmoke;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    overflow-y: auto;
+}
+
+.favgif{
+    width: 300px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.favbar{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+@media screen and (max-width:700px) {
+    .search input{
+        width: 80%;
+    }
+    .search button{
+        width: 20%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .fav{
+        width: 80vw;
+    }
+
+    .home{
+        margin: 72px 10px;
+    }
+    
 }

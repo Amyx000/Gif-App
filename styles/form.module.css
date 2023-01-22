@@ -28,7 +28,13 @@
     background-color: black;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+.main button:active{
+    color: black;
+    background-color: whitesmoke;
+}
+
 .heading{
     font-size: 25px;
 }

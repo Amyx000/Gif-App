@@ -1,19 +1,28 @@
 import React, { useState } from 'react'
 import style from "@/styles/form.module.css"
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import { auth } from '@/firebase-config'
+import { useRouter } from 'next/router'
 
 interface Props {
     onClick:React.MouseEventHandler
 }
 
 function Register({onClick}:Props) {
+    const router =useRouter()
     const [userdata, Setuserdata] = useState({
-        name: "",
         email: "",
         pass: ""
     })
-    const handleSubmit = (e: React.FormEvent) => {
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(userdata)
+        try {
+            await createUserWithEmailAndPassword(auth,userdata.email,userdata.pass)
+            router.push("/home")
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <div className={style.main}>
@@ -21,7 +30,6 @@ function Register({onClick}:Props) {
                 Register
             </div>
             <form onSubmit={handleSubmit}>
-                <input required type={"text"} value={userdata.name} onChange={e => Setuserdata(prev => ({ ...prev, name: e.target.value }))} placeholder="Enter your name" />
                 <input required type={"email"} value={userdata.email} onChange={e => Setuserdata(prev => ({ ...prev, email: e.target.value }))} placeholder="Enter your email" />
                 <input required type={"password"} value={userdata.pass} onChange={e => Setuserdata(prev => ({ ...prev, pass: e.target.value }))} placeholder="Enter your password" />
                 <div>Already have an account? <span onClick={onClick} style={{textDecoration:"underline","cursor":"pointer"}}>Login</span></div>
